@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+
+repositories {
+    maven {
+        url 'https://repo.maven.apache.org/maven2'
+    }
+}
+
+dependencies {
+    testImplementation 'com.intuit.karate:karate-junit5:1.2.0.RC4'
+    //para generar reportes a partir de cucumber
+    testImplementation 'net.masterthought:cucumber-reporting:5.7.0'
+}
+
+//ejecuta con la plataforma de Junit, permite ejecutar la clase ManagementTest
+test{
+    useJUnitPlatform()
+}
+
+// le dice al sistema la ruta donde estan los recursos que se van a ejecutar
+sourceSets {
+    test{
+        resources{
+            srcDir file ('src/test/java')
+            exclude '**/*.java'
+        }
+    }
+}
